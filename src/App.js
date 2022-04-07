@@ -24,6 +24,8 @@ function App() {
     getData();
   },[]);
 
+// select Screen
+
   let content = null;
 
   switch (currentScreen) {
@@ -46,7 +48,7 @@ function App() {
       
   }
 
-
+// Getting data from api and save it on localStorage
 
   const getData = async () => {
     // const respone = await fetch(

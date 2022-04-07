@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 const Register = ({ data }) => {
   const [registerDog, setRegisterDog] = useState([]);
+
+  const [submitButtonIsActive, setSubmitButtonIsActive] = useState(true);
   const [inputTextName, setInputTextName] = useState("");
   const [inputTextSex, setInputTextSex] = useState("");
   const [inputTextAge, setInputTextAge] = useState("");
@@ -10,27 +12,27 @@ const Register = ({ data }) => {
   const [inputImg, setInputImg] = useState("");
   const [present, setPresent] = useState(null);
   const [inputTextOwner, setInputTextOwner] = useState("");
+  const [inputTextPhonenumber, setInputTextPhonenumber] = useState("");
 
   // const [newDogName, setNewDogName] = useState([]);
 
   useEffect(() => {}, []);
 
+  //handlers for adding new dog
   const inputHandlerName = (e) => {
-    console.log(e.target.value);
     setInputTextName(e.target.value);
+   
   };
+  
 
   const inputHandlerSex = (e) => {
-    console.log(e.target.value);
     setInputTextSex(e.target.value);
   };
   const inputHandlerAge = (e) => {
-    console.log(e.target.value);
     setInputTextAge(e.target.value);
   };
 
   const inputHandlerBreed = (e) => {
-    console.log(e.target.value);
     setInputTextBreed(e.target.value);
   };
 
@@ -40,7 +42,6 @@ const Register = ({ data }) => {
   };
 
   const inputHandlerImg = (img) => {
-    console.log(img.target.value);
     setInputImg(img.target.value);
     // https://www.stromsund.se/images/18.35ea2b6c15b378d786812dac/1491287315926/Katt.jpg
   };
@@ -48,13 +49,21 @@ const Register = ({ data }) => {
   const presentHandler = (e) => {
     if (e.target.value === "YES") {
       setPresent(true);
+    } else if (e.target.value === "NO") {
+      setPresent(false);
     }
-    else if (e.target.value === "NO") {
-        setPresent(false);
-    } 
-    
   };
 
+  const inputHandlerOwner = (e) => {
+    setInputTextOwner(e.target.value);
+  };
+
+  const inputHandlerPhonenumber = (e) => {
+    setInputTextPhonenumber(e.target.value);
+    setSubmitButtonIsActive(false);
+  };
+
+  //add data from the inputfield to the registerDog state array.
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -68,16 +77,24 @@ const Register = ({ data }) => {
         chipNumber: inputTextChipnumber,
         img: inputImg,
         present: present,
+        owner: inputTextOwner,
+        phoneNumber: inputTextPhonenumber,
       },
     ]);
+    //clearing the inputFields after submitted.
     setInputTextName("");
     setInputTextSex("");
     setInputTextAge("");
     setInputTextBreed("");
     setInputTextChipnumber("");
+    setInputImg("");
     setPresent("");
+    setInputTextOwner("");
+    setInputTextPhonenumber("");
+    localStorage.setItem("savedRegisteredNewDogData", JSON.stringify(registerDog));
   };
 
+  //showing the new dog on the screen.
   const newDogInfo = registerDog.map((dog) => (
     <div className="newDogItem">
       <div className="newDogName"> Name: {dog.name}</div>
@@ -87,6 +104,8 @@ const Register = ({ data }) => {
       <div className="newDogChipNumber">Chipnumber: {dog.chipNumber} </div>
       <img className="newDogImg" src={dog.img} alt="img" />
       <div className="newDogPresent">Present: {dog.present.toString()}</div>
+      <div className="newDogOwner">Owner: {dog.owner}</div>
+      <divc className="newDogPhonenumber">Phonenumber: {dog.phoneNumber}</divc>
     </div>
   ));
 
@@ -130,11 +149,19 @@ const Register = ({ data }) => {
           onChange={presentHandler}
           placeholder="Present YES/NO"
         />
-        <input placeholder="Name Of The Owner"></input>
-        <input placeholder="Phonenumber"></input>
+        <input
+          value={inputTextOwner}
+          onChange={inputHandlerOwner}
+          placeholder="Name Of The Owner"
+        ></input>
+        <input
+          value={inputTextPhonenumber}
+          onChange={inputHandlerPhonenumber}
+          placeholder="Phonenumber"
+        ></input>
       </div>
 
-      <button onClick={submitHandler} className="submitButton">
+      <button disabled={submitButtonIsActive} onClick={submitHandler} className="submitButton">
         Submit
       </button>
 

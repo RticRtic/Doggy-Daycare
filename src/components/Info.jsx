@@ -9,6 +9,8 @@ const Info = ({ data }) => {
 
   }, [dogIsPresent,searchInputText]);
 
+  //Filter what dog is present and adding it to a empy array
+
   const filterHandlerPresent = () => {
     let isPresent = [];
 
@@ -40,6 +42,8 @@ const Info = ({ data }) => {
     setDogs(data);
   };
 
+
+  // choosing what to se from the select list
   const setFilterState = (e) => {
     console.log(e.target.value);
     if (e.target.value === "present") {
@@ -58,6 +62,7 @@ const Info = ({ data }) => {
     setSearchInputText("");
   };
 
+  //search dog by name when typing in inputfield. UpperCase is needed
   const searchInput = (e) => {
     let dogName = [];
     clearSearchInputField();
@@ -87,6 +92,7 @@ const Info = ({ data }) => {
 
   //  })
 
+  //showing data from the api. Data is in the state dog.
   const dogInfo = dogs.map((dog) => (
     <div className="dogItem">
       <div className="name"> Name: {dog.name}</div>
