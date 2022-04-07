@@ -14,8 +14,6 @@ const Register = ({ data }) => {
   const [inputTextOwner, setInputTextOwner] = useState("");
   const [inputTextPhonenumber, setInputTextPhonenumber] = useState("");
 
-  // const [newDogName, setNewDogName] = useState([]);
-
   useEffect(() => {}, []);
 
   //handlers for adding new dog
@@ -47,11 +45,13 @@ const Register = ({ data }) => {
   };
 
   const presentHandler = (e) => {
-    if (e.target.value === "YES") {
+    if (e.target.value === "YES" || e.target.value === ("yes")) {
       setPresent(true);
-    } else if (e.target.value === "NO") {
+    } else if (e.target.value === "NO" || e.target.value === "no") {
       setPresent(false);
     }
+    
+    
   };
 
   const inputHandlerOwner = (e) => {
@@ -105,7 +105,7 @@ const Register = ({ data }) => {
       <img className="newDogImg" src={dog.img} alt="img" />
       <div className="newDogPresent">Present: {dog.present.toString()}</div>
       <div className="newDogOwner">Owner: {dog.owner}</div>
-      <divc className="newDogPhonenumber">Phonenumber: {dog.phoneNumber}</divc>
+      <div className="newDogPhonenumber">Phonenumber: {dog.phoneNumber}</div>
     </div>
   ));
 
