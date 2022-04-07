@@ -14,6 +14,11 @@ function App() {
 
   const [currentScreen, setCurrentScreen] = useState(WELCOME);
   const [data, setData] = useState([]);
+  // const [localApiData, setLocalApiData] = useState([]);
+
+  // useEffect(() => {
+  //   getLocalSavedData();
+  // },[])
  
   useEffect(() => {
     getData();
@@ -32,7 +37,7 @@ function App() {
       break;
 
     case REGISTER:
-      content = <Register />;
+      content = <Register data = {data} />;
       break;
 
     default:
@@ -44,13 +49,69 @@ function App() {
 
 
   const getData = async () => {
-    const respone = await fetch(
-      `https://api.jsonbin.io/b/624bfef1d96a510f029144e4`
-    );
-    const data = await respone.json();
-    setData(data);
-    console.log(data);
+    // const respone = await fetch(
+    //   `https://api.jsonbin.io/b/624bfef1d96a510f029144e4`
+    // );
+    // const data = await respone.json();
+    // setData(data);
+    console.log("apiData: ", data);
+
+    
+      // localStorage.setItem("savedApiData", JSON.stringify(data));
+      // console.log("saved apidata: ", data);
+
+      
+      if(localStorage.getItem("savedApiData") === null) {
+        // localStorage.setItem("savedApiData", JSON.stringify([]));
+
+        const respone = await fetch(
+          `https://api.jsonbin.io/b/624bfef1d96a510f029144e4`
+        );
+        const data = await respone.json();
+        setData(data);
+        localStorage.setItem("savedApiData", JSON.stringify(data));
+        console.log("saved apidata: ", data);
+
+      } else {
+        let apiDataLocal = JSON.parse(localStorage.getItem("savedApiData"));
+        setData(apiDataLocal);
+        console.log("local Saved apiData: ", apiDataLocal);
+      }
+    
+
   };
+
+  // const savedApiData = () => {
+  //   localStorage.setItem("savedApiData", JSON.stringify(data));
+  // }
+
+  // const getLocalSavedData = () => {
+  //   if(localStorage.getItem("savedApiData") === null) {
+  //     localStorage.setItem("savedApiData", JSON.stringify([]));
+
+  //   } else {
+  //     let apiDataLocal = JSON.parse(localStorage.getItem("savedApiData"));
+  //     setData(apiDataLocal);
+  //     console.log("local Saved apiData: ", apiDataLocal);
+  //   }
+  // }
+
+  
+
+  //   const saveLocalTodos = () => {
+//     localStorage.setItem("todos", JSON.stringify(todos));
+// }
+
+// const getLocalTodos = () => {
+//   if(localStorage.getItem("todos") === null) {
+//     localStorage.setItem("todos", JSON.stringify([]));
+
+//   } else {
+//     let todoLocal = JSON.parse(localStorage.getItem("todos"));
+//     setTodos(todoLocal);
+//   }
+
+// }
 
   return (
     <div className="App">
@@ -63,6 +124,8 @@ function App() {
 
     </div>
   );
+  
+
 }
 
 export default App;
