@@ -21,63 +21,69 @@ const Register = ({ data }) => {
 
 
   //States for checking if the inputfield have an value
-  // const [checkInputValueName, setCheckInputValueName] = useState(false);
-  // const [checkInputValueSex, setCheckInputValueSex] = useState(false);
-  // const [checkInputValueAge, setCheckInputValueAge] = useState(false);
-  // const [checkInputValueBreed, setCheckoutInputValueBreed] = useState(false);
-  // const [checkInputValueChipnumber, setCheckInputValueChipnumber] = useState(false);
-  // const [checkInputValueImg, setCheckInputValueImg] = useState(false);
-  // const [checkInputValuePresent, setCheckInputValuePresent] = useState(false);
-  // const [checkInputValueOwnerName, setCheckInputValueOwnerName] = useState(false);
-  // const [checkInputValuePhonenumber, setCheckInputValuePhonenumber] = useState(false);
+  const [checkInputValueName, setCheckInputValueName] = useState(false);
+  const [checkInputValueSex, setCheckInputValueSex] = useState(false);
+  const [checkInputValueAge, setCheckInputValueAge] = useState(false);
+  const [checkInputValueBreed, setCheckoutInputValueBreed] = useState(false);
+  const [checkInputValueChipnumber, setCheckInputValueChipnumber] = useState(false);
+  const [checkInputValueImg, setCheckInputValueImg] = useState(false);
+  const [checkInputValuePresent, setCheckInputValuePresent] = useState(false);
+  const [checkInputValueOwnerName, setCheckInputValueOwnerName] = useState(false);
+  const [checkInputValuePhonenumber, setCheckInputValuePhonenumber] = useState(false);
 
 
 
   useEffect(() => {
-    
+    inputValueHandler();
   }, [
-    // checkInputValueName,
-    // checkInputValueSex,
-    // checkInputValueAge,
-    // checkInputValueBreed,
-    // checkInputValueChipnumber,
-    // checkInputValueImg,
-    // checkInputValuePresent,
-    // checkInputValueOwnerName,
-    // checkInputValuePhonenumber
+    checkInputValueName,
+    checkInputValueSex,
+    checkInputValueAge,
+    checkInputValueBreed,
+    checkInputValueChipnumber,
+    checkInputValueImg,
+    checkInputValuePresent,
+    checkInputValueOwnerName,
+    checkInputValuePhonenumber
   ]);
 
   //handlers for adding new dog
   const inputHandlerName = (e) => {
     setInputTextName(e.target.value);
+
     //checking if inputfield have an value.
-  
-    //setCheckInputValueName(true);
+    setCheckInputValueName(true);
+
   };
 
   const inputHandlerSex = (e) => {
     setInputTextSex(e.target.value);
-    //setCheckInputValueSex(true);
+    setCheckInputValueSex(true);
+    
   };
   const inputHandlerAge = (e) => {
     setInputTextAge(e.target.value);
-    //setCheckInputValueAge(true);
+    setCheckInputValueAge(true);
+    
   };
 
   const inputHandlerBreed = (e) => {
     setInputTextBreed(e.target.value);
-    //setCheckoutInputValueBreed(true);
+    setCheckoutInputValueBreed(true);
+    
   };
 
   const inputHandlerChipnumber = () => {
     let chipNumber = Math.random() * 1000;
     setInputTextChipnumber(chipNumber);
-   //setCheckInputValueChipnumber(true);
+    setCheckInputValueChipnumber(true);
+    
   };
 
   const inputHandlerImg = (img) => {
     setInputImg(img.target.value);
-    //setCheckInputValueImg(true);
+    setCheckInputValueImg(true);
+   
     // https://www.stromsund.se/images/18.35ea2b6c15b378d786812dac/1491287315926/Katt.jpg
   };
 
@@ -85,41 +91,54 @@ const Register = ({ data }) => {
     setPresent(e.target.value);
     if (e.target.value === "YES" || e.target.value === "yes") {
       setCheckPresent(true);
-      //setCheckInputValuePresent(true);
+      setCheckInputValuePresent(true);
     } else if (e.target.value === "NO" || e.target.value === "no") {
       setCheckPresent(false);
-      //setCheckInputValuePresent(true);
+      setCheckInputValuePresent(true);
+      
     }
+    
   };
 
   const inputHandlerOwner = (e) => {
     setInputTextOwner(e.target.value);
-    //setCheckInputValueOwnerName(true);
+    setCheckInputValueOwnerName(true);
+   
   };
 
   const inputHandlerPhonenumber = (e) => {
     setInputTextPhonenumber(e.target.value);
-    //setCheckInputValuePhonenumber(true)
-    setSubmitButtonIsActive(false)
+    setCheckInputValuePhonenumber(true)
+    
+    
   };
 
   //handler for check if every inputfield have an value
-  // const inputValueHandler = () => {
-  //   if (
-  //     checkInputValueName &&
-  //     checkInputValueSex &&
-  //     checkInputValueAge &&
-  //     checkInputValueBreed &&
-  //     checkInputValueChipnumber &&
-  //     checkInputValueImg &&
-  //     checkInputValuePresent &&
-  //     checkInputValueOwnerName &&
-  //     checkInputValuePhonenumber
-  //   ) {
-  //     setSubmitButtonIsActive(false);
-  //     console.log("HEJ");
-  //   }
-  // };
+  const inputValueHandler = () => {
+     
+    if (
+      checkInputValueName &&
+      checkInputValueSex &&
+      checkInputValueAge &&
+      checkInputValueBreed &&
+      checkInputValueChipnumber &&
+      checkInputValueImg &&
+      checkInputValuePresent &&
+      checkInputValueOwnerName &&
+      checkInputValuePhonenumber
+    ) {
+      setSubmitButtonIsActive(false)
+      
+     
+     
+    } else {
+      setSubmitButtonIsActive(true);
+      
+    }
+    
+  };
+
+  
 
   //add data from the inputfield to the dog state array.
   const submitHandler = (e) => {
@@ -186,59 +205,55 @@ const Register = ({ data }) => {
           className="input-text-name"
           value={inputTextName}
           onChange={inputHandlerName}
-          placeholder={submitButtonIsActive ? "Name" : "Need dogs name"}
+          placeholder="Name"
         ></input>
         <input
           className="input-text-sex"
           value={inputTextSex}
           onChange={inputHandlerSex}
-          placeholder={submitButtonIsActive ? "Sex" : "Need gender"}
+          placeholder="Gender"
         ></input>
         <input
           className="input-text-age"
           value={inputTextAge}
           onChange={inputHandlerAge}
-          placeholder={submitButtonIsActive ? "Age" : "Need age"}
+          placeholder="Age"
         ></input>
         <input
           className="input-text-breed"
           value={inputTextBreed}
           onChange={inputHandlerBreed}
-          placeholder={submitButtonIsActive ? "Breed" : "Need breed"}
+          placeholder="Breed"
         ></input>
         <input
           className="input-text-chipnumber"
           value={inputTextChipnumber}
           onChange={inputHandlerChipnumber}
-          placeholder={submitButtonIsActive ? "Press any key" : "Need value"}
+          placeholder="Press any key"
         ></input>
         <input
           className="input-img"
           value={inputImg}
           onChange={inputHandlerImg}
-          placeholder={submitButtonIsActive ? "Img-(URL)" : "Need img Url"}
+          placeholder="Img-(URL)"
         ></input>
         <input
           className="input-text-present"
           value={present}
           onChange={presentHandler}
-          placeholder={submitButtonIsActive ? "YES/NO" : "Need present YES/NO"}
+          placeholder="Present: YES/NO"
         />
         <input
           className="input-text-owner"
           value={inputTextOwner}
           onChange={inputHandlerOwner}
-          placeholder={
-            submitButtonIsActive ? "Name of the owner" : "Need owners name"
-          }
+          placeholder="Name of the owner"
         ></input>
         <input
           className="input-text-phonenumber"
           value={inputTextPhonenumber}
           onChange={inputHandlerPhonenumber}
-          placeholder={
-            submitButtonIsActive ? "phonenumber" : "Need phonenumber"
-          }
+          placeholder="Phonenumber"
         ></input>
       </div>
 

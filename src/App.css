@@ -87,6 +87,7 @@
   grid-gap: 1em;
   padding: 1em;
   
+  
 
 }
 
@@ -109,6 +110,10 @@
   height: 150px;
 
   
+}
+
+.dog-img:active {
+  transform: translate3d(3px, 3px, 0px);
 }
 
 .name, .sex, .age, .breed, .chipnumber, .present {
@@ -190,6 +195,20 @@
   margin-top: 1em;
   color: white;
 
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+
+}
+
+.select-present, .search-name, .search-breed {
+  padding: 5px 10px;
+  border: solid 2px black;
+  border-radius: 20px;
 }
 
 

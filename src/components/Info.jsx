@@ -5,9 +5,7 @@ const Info = ({ data }) => {
   const [searchInputText, setSearchInputText] = useState("");
   const [dogs, setDogs] = useState(data);
 
-  useEffect(() => {
-
-  }, [dogIsPresent,searchInputText]);
+  useEffect(() => {}, [dogIsPresent, searchInputText]);
 
   //Filter what dog is present and adding it to a empy array
   const filterHandlerPresent = () => {
@@ -17,9 +15,7 @@ const Info = ({ data }) => {
       if (dog.present === true) {
         isPresent.push(dog);
         console.log(isPresent);
-        
       }
-
     });
     setDogs(isPresent);
   };
@@ -37,10 +33,8 @@ const Info = ({ data }) => {
   };
 
   const showAllDogs = () => {
-    
     setDogs(data);
   };
-
 
   // choosing what to se from the select list
   const setFilterState = (e) => {
@@ -62,12 +56,11 @@ const Info = ({ data }) => {
   };
 
   //search dog by name when typing in inputfield. UpperCase is needed
-  const searchInput = (e) => {
+  const searchInputName = (e) => {
     let dogName = [];
     clearSearchInputField();
     data.forEach((input) => {
       if (input.name.startsWith(e.target.value)) {
-        console.log(e.target.value);
         setSearchInputText(e.target.value);
         dogName.push(input);
       }
@@ -75,8 +68,23 @@ const Info = ({ data }) => {
     setDogs(dogName);
   };
 
+  const searchInputBreed = (e) => {
+    let breed = [];
+    clearSearchInputField();
+    data.forEach((input) => {
+      if (input.breed.startsWith(e.target.value)) {
+        setSearchInputText(e.target.value);
+        breed.push(input);
+      }
+      setDogs(breed);
+    });
+  };
 
-  //showing data from the api. Data is in the state dogs.
+  const clickedDogImage = () => {
+    console.log("clicked");
+  };
+
+  //showing data from the api. Data is in the dogs state.
   const dogInfo = dogs.map((dog) => (
     <div className="dogItem">
       <div className="name"> Name: {dog.name}</div>
@@ -85,15 +93,18 @@ const Info = ({ data }) => {
       <div className="breed">Breed: {dog.breed}</div>
       <div className="chipnumber">Chipnumber: {dog.chipNumber}</div>
       <div className="present">Present: {dog.present.toString()}</div>
-      <img className="dog-img" src={dog.img} alt="dog" />
+      <img
+        onClick={clickedDogImage}
+        className="dog-img"
+        src={dog.img}
+        alt="dog"
+      />
       <div className="owner">
         Owner: {dog.owner["name"]} {dog.owner["lastName"]}
       </div>
       <div className="phoneNumber">Phonenumber: {dog.owner.phoneNumber} </div>
     </div>
   ));
-
-  
 
   return (
     <div>
@@ -104,12 +115,14 @@ const Info = ({ data }) => {
           <option value="present">Present in Daycare</option>
         </select>
 
-       
         <input
-          className="input"
+          className="search-name"
           placeholder="Search By Name"
-          onChange={searchInput}
+          onChange={searchInputName}
         />
+        <input className="search-breed"
+         placeholder="Search Breed"
+         onChange={searchInputBreed} />
       </div>
 
       <div className="dogList">{dogInfo}</div>
