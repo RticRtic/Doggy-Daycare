@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 // import Welcome from "./components/Welcome";
 
 const Register = ({ data }) => {
@@ -129,57 +130,57 @@ const Register = ({ data }) => {
 
   return (
     <div>
-      <h1>Register Your Dog</h1>
+      <h1 className="register-header">Register Your Dog</h1>
 
-      <div className="input">
-        <input
+      <div className="input-fields">
+        <input className="input-text-name"
           value={inputTextName}
           onChange={inputHandlerName}
           placeholder="Name"
         ></input>
-        <input
+        <input className="input-text-sex"
           value={inputTextSex}
           onChange={inputHandlerSex}
           placeholder="Sex"
         ></input>
-        <input
+        <input className="input-text-age"
           value={inputTextAge}
           onChange={inputHandlerAge}
           placeholder="Age"
         ></input>
-        <input
+        <input className="input-text-breed"
           value={inputTextBreed}
           onChange={inputHandlerBreed}
           placeholder="Breed"
         ></input>
-        <input
+        <input className="input-text-chipnumber"
           value={inputTextChipnumber}
           onChange={inputHandlerChipnumber}
           placeholder="Chipnnumber"
         ></input>
-        <input
+        <input className="input-img"
           value={inputImg}
           onChange={inputHandlerImg}
           placeholder="Image (Url)"
         ></input>
-        <input
+        <input className="input-text-present"
           value={present}
           onChange={presentHandler}
           placeholder="Present YES/NO"
         />
-        <input
+        <input className="input-text-owner"
           value={inputTextOwner}
           onChange={inputHandlerOwner}
           placeholder="Name Of The Owner"
         ></input>
-        <input
+        <input className="input-text-phonenumber"
           value={inputTextPhonenumber}
           onChange={inputHandlerPhonenumber}
           placeholder="Phonenumber"
         ></input>
       </div>
 
-      <button disabled={submitButtonIsActive} onClick={submitHandler} className="submitButton">
+      <button className="submit-button" disabled={submitButtonIsActive} onClick={submitHandler} className="submitButton">
         Submit
       </button>
 
