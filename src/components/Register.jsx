@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Register = ({ data }) => {
-  const [registerDog, setRegisterDog] = useState([]);
+  const [dog, setDog] = useState(null);
 
   const [submitButtonIsActive, setSubmitButtonIsActive] = useState(true);
   const [inputTextName, setInputTextName] = useState("");
@@ -10,7 +10,7 @@ const Register = ({ data }) => {
   const [inputTextBreed, setInputTextBreed] = useState("");
   const [inputTextChipnumber, setInputTextChipnumber] = useState("");
   const [inputImg, setInputImg] = useState("");
-  const [present, setPresent] = useState(null);
+  const [present, setPresent] = useState("");
   const [inputTextOwner, setInputTextOwner] = useState("");
   const [inputTextPhonenumber, setInputTextPhonenumber] = useState("");
 
@@ -22,7 +22,6 @@ const Register = ({ data }) => {
    
   };
   
-
   const inputHandlerSex = (e) => {
     setInputTextSex(e.target.value);
   };
@@ -65,10 +64,10 @@ const Register = ({ data }) => {
 
   //add data from the inputfield to the registerDog state array.
   const submitHandler = (e) => {
+
     e.preventDefault();
 
-    setRegisterDog([
-      ...registerDog,
+    let newDog = 
       {
         name: inputTextName,
         sex: inputTextSex,
@@ -79,8 +78,12 @@ const Register = ({ data }) => {
         present: present,
         owner: inputTextOwner,
         phoneNumber: inputTextPhonenumber,
-      },
-    ]);
+      };
+
+      setDog(newDog);
+      data.push(newDog);
+    
+
     //clearing the inputFields after submitted.
     setInputTextName("");
     setInputTextSex("");
@@ -91,23 +94,30 @@ const Register = ({ data }) => {
     setPresent("");
     setInputTextOwner("");
     setInputTextPhonenumber("");
-    localStorage.setItem("savedRegisteredNewDogData", JSON.stringify(registerDog));
+
+    localStorage.setItem("savedApiData", JSON.stringify(data));
   };
 
   //showing the new dog on the screen.
-  const newDogInfo = registerDog.map((dog) => (
-    <div className="newDogItem">
-      <div className="newDogName"> Name: {dog.name}</div>
-      <div className="newDogSex">Sex: {dog.sex}</div>
-      <div className="newDogAge">Age: {dog.age}</div>
-      <div className="newDogBreed">Breed: {dog.breed}</div>
-      <div className="newDogChipNumber">Chipnumber: {dog.chipNumber} </div>
-      <img className="newDogImg" src={dog.img} alt="img" />
-      <div className="newDogPresent">Present: {dog.present.toString()}</div>
-      <div className="newDogOwner">Owner: {dog.owner}</div>
-      <div className="newDogPhonenumber">Phonenumber: {dog.phoneNumber}</div>
-    </div>
-  ));
+  let newDogInfo = null;
+  if(dog !== null) {
+       newDogInfo =  (
+      <div className="newDogItem">
+        <div className="newDogName"> Name: {dog.name}</div>
+        <div className="newDogSex">Sex: {dog.sex}</div>
+        <div className="newDogAge">Age: {dog.age}</div>
+        <div className="newDogBreed">Breed: {dog.breed}</div>
+        <div className="newDogChipNumber">Chipnumber: {dog.chipNumber} </div>
+        <img className="newDogImg" src={dog.img} alt="img" />
+        <div className="newDogPresent">Present: {dog.present.toString()}</div>
+        <div className="newDogOwner">Owner: {dog.owner}</div>
+        <div className="newDogPhonenumber">Phonenumber: {dog.phoneNumber}</div>
+      </div>
+    );
+
+  }
+ 
+  
 
   return (
     <div>
