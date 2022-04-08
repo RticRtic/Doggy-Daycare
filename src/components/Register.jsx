@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+// import Welcome from "./components/Welcome";
+
 const Register = ({ data }) => {
   const [dog, setDog] = useState(null);
 
@@ -11,6 +13,7 @@ const Register = ({ data }) => {
   const [inputTextChipnumber, setInputTextChipnumber] = useState("");
   const [inputImg, setInputImg] = useState("");
   const [present, setPresent] = useState("");
+  const [checkPresent, setCheckPresent] = useState(false);
   const [inputTextOwner, setInputTextOwner] = useState("");
   const [inputTextPhonenumber, setInputTextPhonenumber] = useState("");
 
@@ -19,6 +22,7 @@ const Register = ({ data }) => {
   //handlers for adding new dog
   const inputHandlerName = (e) => {
     setInputTextName(e.target.value);
+    
    
   };
   
@@ -44,14 +48,18 @@ const Register = ({ data }) => {
   };
 
   const presentHandler = (e) => {
-    if (e.target.value === "YES" || e.target.value === ("yes")) {
-      setPresent(true);
-    } else if (e.target.value === "NO" || e.target.value === "no") {
-      setPresent(false);
-    }
-    
-    
+      setPresent(e.target.value);
+      if (e.target.value === "YES" || e.target.value === "yes") {
+        setCheckPresent(true);
+
+      } else if (e.target.value === "NO" || e.target.value === "no") {
+        setCheckPresent(false);
+
+      } 
+   
   };
+
+  console.log("current value: ", checkPresent);
 
   const inputHandlerOwner = (e) => {
     setInputTextOwner(e.target.value);
@@ -75,7 +83,7 @@ const Register = ({ data }) => {
         breed: inputTextBreed,
         chipNumber: inputTextChipnumber,
         img: inputImg,
-        present: present,
+        present: checkPresent,
         owner: inputTextOwner,
         phoneNumber: inputTextPhonenumber,
       };
@@ -175,7 +183,7 @@ const Register = ({ data }) => {
         Submit
       </button>
 
-      <div>{newDogInfo}</div>
+      <div className = "newDogList">{newDogInfo}</div>
     </div>
   );
 };
