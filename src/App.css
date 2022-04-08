@@ -5,7 +5,7 @@
   text-align: center;
   background-image: linear-gradient(to right, #868f96 0%, #596164 100%);
   min-height: 100vh;
-  padding-top: 20px;
+  padding-top: 30px;
   box-shadow: 2px 2px 2px 2px black;
  
 }
@@ -63,7 +63,7 @@
 
 .dog-logo {
   position: absolute;
-  top: 30px;
+  top: 40px;
   right: 16px;
   border-radius: 50%;
   width: 10vh;
@@ -123,9 +123,72 @@
   
 }
 
-.newDogList {
+.register-header {
+  font-style: italic;
+  font-size: calc(10px + 2vmin);
+  background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+  padding: 20px;
+  border-radius: 20px;
+  color: rgb(205, 5, 5);
+  box-shadow: 2px 2px 2px 2px black;
 
+}
 
+.input-fields{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+.input-text-name, .input-text-sex, .input-text-age, .input-text-breed,
+.input-text-chipnumber, .input-img, .input-text-present, .input-text-owner,
+.input-text-phonenumber {
+
+  border: solid 2px black;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px black;
+  
+
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-weight: bold;
+  border: solid 2px;
+  border-radius: 20px;
+  background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+
+}
+
+.submit-button:active {
+  transform: translate3d(3px, 3px, 0px);
+
+}
+
+.new-dog-list {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1em;
+  padding: 3em;
+
+}
+
+.new-dog-item {
+  border: solid 2px white;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px 2px black;
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  font-weight: bold;
+  margin-top: 1em;
+  color: white;
 
 }
 
