@@ -10,7 +10,6 @@ const Info = ({ data }) => {
   }, [dogIsPresent,searchInputText]);
 
   //Filter what dog is present and adding it to a empy array
-
   const filterHandlerPresent = () => {
     let isPresent = [];
 
@@ -76,23 +75,8 @@ const Info = ({ data }) => {
     setDogs(dogName);
   };
 
-  //   input_search_country.addEventListener("input", function() {
-  //     // searchCountryByFullName(input_search_country.value);
-  //      if(allData != null) {
-  //          clearDataContainer();
-  //          clearLongLatTextDisplay();
-  //          allData.forEach(country => {
-  //              if(country.Combined_Key.startsWith(input_search_country.value)) {
-  //                  showCountryCovidData(country);
-  //              }
 
-  //          })
-
-  //      }
-
-  //  })
-
-  //showing data from the api. Data is in the state dog.
+  //showing data from the api. Data is in the state dogs.
   const dogInfo = dogs.map((dog) => (
     <div className="dogItem">
       <div className="name"> Name: {dog.name}</div>
