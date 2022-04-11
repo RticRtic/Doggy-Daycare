@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
+import Dog from "./Dog";
+
 
 const Info = ({ data }) => {
+
+  // const DOG = "dog";
+  // const INFO = "info";
+
   const [dogIsPresent, setDogIsPresent] = useState(null);
   const [searchInputText, setSearchInputText] = useState("");
   const [dogs, setDogs] = useState(data);
+  //const [dogScreen, setDogScreen] = useState(INFO);
 
   useEffect(() => {}, [dogIsPresent, searchInputText]);
 
@@ -80,8 +87,15 @@ const Info = ({ data }) => {
     });
   };
 
-  const clickedDogImage = () => {
-    console.log("clicked");
+  // let content = null;
+  const clickedDogImage = (e) => {
+  
+  //  if(e.target.value === data.img) {
+  //   content = <Dog doginfo= {() => setDogScreen(DOG) } />
+  //  }
+    console.log("clicked")
+    
+    
   };
 
   //showing data from the api. Data is in the dogs state.
@@ -92,9 +106,11 @@ const Info = ({ data }) => {
       <div className="age">Age: {dog.age}</div>
       <div className="breed">Breed: {dog.breed}</div>
       <div className="chipnumber">Chipnumber: {dog.chipNumber}</div>
-      <div className="present">Present: {dog.present.toString()}</div>
+      <div className="present">Present: {dog.present.toString()}</div> <br />
+      <div className="grid-text">Click the image</div>
+       
       <img
-        onClick={clickedDogImage}
+        onClick= {clickedDogImage}
         className="dog-img"
         src={dog.img}
         alt="dog"
