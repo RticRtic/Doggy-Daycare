@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Dog from "./Dog";
 
-
 const Info = ({ data }) => {
-
   // const DOG = "dog";
   // const INFO = "info";
 
   const [dogIsPresent, setDogIsPresent] = useState(null);
   const [searchInputText, setSearchInputText] = useState("");
   const [dogs, setDogs] = useState(data);
+  const [singleDogData, setSingleDogData] = useState([]);
   //const [dogScreen, setDogScreen] = useState(INFO);
 
   useEffect(() => {}, [dogIsPresent, searchInputText]);
@@ -87,17 +86,23 @@ const Info = ({ data }) => {
     });
   };
 
-  // let content = null;
-  const clickedDogImage = (e) => {
-  
-  //  if(e.target.value === data.img) {
-  //   content = <Dog doginfo= {() => setDogScreen(DOG) } />
-  //  }
-    console.log("clicked")
-    
-    
-  };
+  const singleDogDataHandler = (e) => {
+    let info = [];
 
+    console.log(e.target.src)
+    info.push(e.target.src);
+    console.log("info array: ", info);
+
+    setSingleDogData(info);
+    console.log("singelDogData: ", singleDogData);
+
+    <Dog dogItem = {singleDogData}/>
+   
+    
+  
+ };
+
+ 
   //showing data from the api. Data is in the dogs state.
   const dogInfo = dogs.map((dog) => (
     <div className="dogItem">
@@ -108,9 +113,9 @@ const Info = ({ data }) => {
       <div className="chipnumber">Chipnumber: {dog.chipNumber}</div>
       <div className="present">Present: {dog.present.toString()}</div> <br />
       <div className="grid-text">Click the image</div>
-       
       <img
-        onClick= {clickedDogImage}
+
+        onClick = {singleDogDataHandler}
         className="dog-img"
         src={dog.img}
         alt="dog"
@@ -136,9 +141,11 @@ const Info = ({ data }) => {
           placeholder="Search By Name"
           onChange={searchInputName}
         />
-        <input className="search-breed"
-         placeholder="Search Breed"
-         onChange={searchInputBreed} />
+        <input
+          className="search-breed"
+          placeholder="Search Breed"
+          onChange={searchInputBreed}
+        />
       </div>
 
       <div className="dogList">{dogInfo}</div>

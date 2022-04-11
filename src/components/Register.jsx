@@ -132,7 +132,7 @@ const Register = ({ data }) => {
     if (e.target.value !== "") {
       setCheckInputValueOwnerName(true);
     } else {
-      setCheckInputValueAge(false)
+      setCheckInputValueOwnerName(false)
     }
     
   };

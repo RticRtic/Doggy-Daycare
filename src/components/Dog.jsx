@@ -1,9 +1,9 @@
 
 
-const Dog = () => {
+const Dog = ({dogItem}) => {
     return(
         <div>
-
+           {dogItem}
         </div>
     );
 }
