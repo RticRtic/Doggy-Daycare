@@ -96,7 +96,7 @@ const Info = ({ data }) => {
     setSingleDogData(info);
     console.log("singelDogData: ", singleDogData);
 
-    <Dog dogItem = {singleDogData}/>
+    // <Dog dogItem = {singleDogData}/>
    
     
   
