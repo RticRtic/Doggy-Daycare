@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Dog from "./Dog";
+import { Link } from "react-router-dom";
 
-const Info = ({ data }) => {
+const Info = ({ data, setShowDog}) => {
   // const DOG = "dog";
   // const INFO = "info";
 
   const [dogIsPresent, setDogIsPresent] = useState(null);
   const [searchInputText, setSearchInputText] = useState("");
   const [dogs, setDogs] = useState(data);
-  const [singleDogData, setSingleDogData] = useState([]);
-  //const [dogScreen, setDogScreen] = useState(INFO);
+  //const [showDog, setShowDog] = useState(null);
+  
 
   useEffect(() => {}, [dogIsPresent, searchInputText]);
 
-  //Filter what dog is present and adding it to a empy array
+  //Filter what dog is present and adding it to an empy array
   const filterHandlerPresent = () => {
     let isPresent = [];
 
@@ -86,26 +86,21 @@ const Info = ({ data }) => {
     });
   };
 
-  const singleDogDataHandler = (e) => {
-    let info = [];
+  // const showDogDataHandler = (e) => {
+  //   let info = [];
 
-    console.log(e.target.src)
-    info.push(e.target.src);
-    console.log("info array: ", info);
+  //   info.push(e.target.src);
+  //   console.log("info array: ", info);
 
-    setSingleDogData(info);
-    console.log("singelDogData: ", singleDogData);
+  //   setShowDog(e.target.src);
+  //   console.log(showDog)
 
-    // <Dog dogItem = {singleDogData}/>
-   
-    
-  
- };
+  //      <Dog dogItem = {singleDogData}/>
+  // };
 
- 
   //showing data from the api. Data is in the dogs state.
   const dogInfo = dogs.map((dog) => (
-    <div className="dogItem">
+    <div className="dogItem" key={dog.chipNumber}>
       <div className="name"> Name: {dog.name}</div>
       <div className="sex">Sex: {dog.sex}</div>
       <div className="age">Age: {dog.age}</div>
@@ -113,13 +108,14 @@ const Info = ({ data }) => {
       <div className="chipnumber">Chipnumber: {dog.chipNumber}</div>
       <div className="present">Present: {dog.present.toString()}</div> <br />
       <div className="grid-text">Click the image</div>
-      <img
-
-        onClick = {singleDogDataHandler}
-        className="dog-img"
-        src={dog.img}
-        alt="dog"
-      />
+      <Link to="/showdog">
+        <img
+          onClick={()=> setShowDog(dog)}
+          className="dog-img"
+          src={dog.img}
+          alt="dog"
+        />
+      </Link>
       <div className="owner">
         Owner: {dog.owner["name"]} {dog.owner["lastName"]}
       </div>

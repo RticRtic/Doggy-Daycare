@@ -5,8 +5,12 @@ import React, { useEffect, useState } from "react";
 const Register = ({ data }) => {
   const [dog, setDog] = useState(null);
 
+  //States for disabling buttons
   const [submitButtonIsActive, setSubmitButtonIsActive] = useState(true);
+  const [saveButtonIsActive, setSaveButtonIsActive] = useState(true);
+  const [deleteButtonIsActive, setDeleteButtonIsActive] = useState(true);
 
+  //states for inputValues
   const [inputTextName, setInputTextName] = useState("");
   const [inputTextSex, setInputTextSex] = useState("");
   const [inputTextAge, setInputTextAge] = useState("");
@@ -123,8 +127,7 @@ const Register = ({ data }) => {
       }
       
     }
-    console.log(checkPresent, e.target.value);
-    console.log(checkInputValuePresent);
+    
   };
 
   const inputHandlerOwner = (e) => {
@@ -199,14 +202,14 @@ const Register = ({ data }) => {
     setInputTextOwner("");
     setInputTextPhonenumber("");
 
-    localStorage.setItem("savedApiData", JSON.stringify(data));
+    
   };
 
   //showing the new dog on the screen.
   let newDogInfo = null;
   if (dog !== null) {
     newDogInfo = (
-      <div className="new-dog-item">
+      <div className="new-dog-item" key={dog.chipNumber}>
         <div className="new-dog-name"> Name: {dog.name}</div>
         <div className="new-dog-sex">Sex: {dog.sex}</div>
         <div className="new-dog-age">Age: {dog.age}</div>
@@ -221,6 +224,19 @@ const Register = ({ data }) => {
       </div>
     );
   }
+
+  //Save new dogitem to localstorage
+  const saveNewDogToLocalStorage = () => {
+    localStorage.setItem("savedApiData", JSON.stringify(data));
+  }
+
+  //NOTE: For the moment its deleting all the added object/objects
+  const deleteDogItem = () => {
+    localStorage.removeItem("savedApiData");
+    
+  }
+
+  
 
   return (
     <div>
@@ -292,6 +308,12 @@ const Register = ({ data }) => {
       </button>
 
       <div className="new-dog-list">{newDogInfo}</div>
+
+      <div className="save-or-delete-buttons">
+        <button className="save-button" onClick={saveNewDogToLocalStorage}>Save</button>
+        <button className="delete-button" onClick={deleteDogItem}>Delete</button>
+      </div>
+
     </div>
   );
 };
