@@ -102,6 +102,12 @@
 
 }
 
+
+
+.grid-text {
+  color:#bdc2e8;
+}
+
 .dog-img {
   margin-top: 1em;
   border-radius: 50%;
@@ -199,9 +205,10 @@
 
 .select {
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   align-items: center;
   padding: 2em;
+  
 
 }
 

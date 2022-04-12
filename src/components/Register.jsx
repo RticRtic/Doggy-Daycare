@@ -7,7 +7,6 @@ const Register = ({ data }) => {
 
   const [submitButtonIsActive, setSubmitButtonIsActive] = useState(true);
 
-
   const [inputTextName, setInputTextName] = useState("");
   const [inputTextSex, setInputTextSex] = useState("");
   const [inputTextAge, setInputTextAge] = useState("");
@@ -19,19 +18,19 @@ const Register = ({ data }) => {
   const [inputTextOwner, setInputTextOwner] = useState("");
   const [inputTextPhonenumber, setInputTextPhonenumber] = useState("");
 
-
   //States for checking if the inputfield have an value
   const [checkInputValueName, setCheckInputValueName] = useState(false);
   const [checkInputValueSex, setCheckInputValueSex] = useState(false);
   const [checkInputValueAge, setCheckInputValueAge] = useState(false);
   const [checkInputValueBreed, setCheckoutInputValueBreed] = useState(false);
-  const [checkInputValueChipnumber, setCheckInputValueChipnumber] = useState(false);
+  const [checkInputValueChipnumber, setCheckInputValueChipnumber] =
+    useState(false);
   const [checkInputValueImg, setCheckInputValueImg] = useState(false);
   const [checkInputValuePresent, setCheckInputValuePresent] = useState(false);
-  const [checkInputValueOwnerName, setCheckInputValueOwnerName] = useState(false);
-  const [checkInputValuePhonenumber, setCheckInputValuePhonenumber] = useState(false);
-
-
+  const [checkInputValueOwnerName, setCheckInputValueOwnerName] =
+    useState(false);
+  const [checkInputValuePhonenumber, setCheckInputValuePhonenumber] =
+    useState(false);
 
   useEffect(() => {
     inputValueHandler();
@@ -44,46 +43,60 @@ const Register = ({ data }) => {
     checkInputValueImg,
     checkInputValuePresent,
     checkInputValueOwnerName,
-    checkInputValuePhonenumber
+    checkInputValuePhonenumber,
   ]);
 
   //handlers for adding new dog
   const inputHandlerName = (e) => {
     setInputTextName(e.target.value);
-
     //checking if inputfield have an value.
-    setCheckInputValueName(true);
-
+    if (e.target.value !== "") {
+      setCheckInputValueName(true);
+    } else {
+      setCheckInputValueName(false);
+    }
   };
 
   const inputHandlerSex = (e) => {
     setInputTextSex(e.target.value);
-    setCheckInputValueSex(true);
-    
+    if (e.target.value !== "") {
+      setCheckInputValueSex(true);
+    } else {
+      setCheckInputValueSex(false);
+    }
   };
   const inputHandlerAge = (e) => {
     setInputTextAge(e.target.value);
-    setCheckInputValueAge(true);
-    
+    if (e.target.value !== "") {
+      setCheckInputValueAge(true);
+    } else {
+      setCheckInputValueAge(false);
+    }
   };
 
   const inputHandlerBreed = (e) => {
     setInputTextBreed(e.target.value);
-    setCheckoutInputValueBreed(true);
-    
+    if (e.target.value !== "") {
+      setCheckoutInputValueBreed(true);
+    } else {
+      setCheckoutInputValueBreed(false);
+    }
   };
 
   const inputHandlerChipnumber = () => {
     let chipNumber = Math.random() * 1000;
     setInputTextChipnumber(chipNumber);
     setCheckInputValueChipnumber(true);
-    
   };
 
   const inputHandlerImg = (img) => {
     setInputImg(img.target.value);
-    setCheckInputValueImg(true);
-   
+    if (img.target.value !== "") {
+      setCheckInputValueImg(true);
+    } else {
+      setCheckInputValueImg(false);
+    }
+
     // https://www.stromsund.se/images/18.35ea2b6c15b378d786812dac/1491287315926/Katt.jpg
   };
 
@@ -91,31 +104,51 @@ const Register = ({ data }) => {
     setPresent(e.target.value);
     if (e.target.value === "YES" || e.target.value === "yes") {
       setCheckPresent(true);
-      setCheckInputValuePresent(true);
+     
+      if (e.target.value !== "") {
+        setCheckInputValuePresent(true);
+      } else {
+        setCheckInputValuePresent(false);
+        setCheckPresent(false);
+      }
+      
+
     } else if (e.target.value === "NO" || e.target.value === "no") {
       setCheckPresent(false);
-      setCheckInputValuePresent(true);
+      if (e.target.value !== "") {
+        setCheckInputValuePresent(true);
+      } else {
+        setCheckInputValuePresent(false);
+        setCheckPresent(true);
+      }
       
     }
-    
+    console.log(checkPresent, e.target.value);
+    console.log(checkInputValuePresent);
   };
 
   const inputHandlerOwner = (e) => {
     setInputTextOwner(e.target.value);
-    setCheckInputValueOwnerName(true);
-   
+    if (e.target.value !== "") {
+      setCheckInputValueOwnerName(true);
+    } else {
+      setCheckInputValueOwnerName(false)
+    }
+    
   };
 
   const inputHandlerPhonenumber = (e) => {
     setInputTextPhonenumber(e.target.value);
-    setCheckInputValuePhonenumber(true)
-    
+    if (e.target.value !== "") {
+      setCheckInputValuePhonenumber(true);
+    } else {
+      setCheckInputValuePhonenumber(false);
+    }
     
   };
 
   //handler for check if every inputfield have an value
   const inputValueHandler = () => {
-     
     if (
       checkInputValueName &&
       checkInputValueSex &&
@@ -127,18 +160,11 @@ const Register = ({ data }) => {
       checkInputValueOwnerName &&
       checkInputValuePhonenumber
     ) {
-      setSubmitButtonIsActive(false)
-      
-     
-     
+      setSubmitButtonIsActive(false);
     } else {
       setSubmitButtonIsActive(true);
-      
     }
-    
   };
-
-  
 
   //add data from the inputfield to the dog state array.
   const submitHandler = (e) => {
