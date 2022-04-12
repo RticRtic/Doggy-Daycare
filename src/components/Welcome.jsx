@@ -1,5 +1,6 @@
 import React from "react";
 import dogLogo2 from "../img/dog-logo2.webp";
+import {Link} from "react-router-dom"
 
 const Welcome = ({ registerScreen, infoScreen }) => {
 
@@ -18,8 +19,14 @@ const Welcome = ({ registerScreen, infoScreen }) => {
       </header>
 
       <div className="welcome-buttons">
-        <button className="register-button" onClick={registerScreen}>Register Dog</button>
-        <button className="info-button" onClick={infoScreen}>Dogs</button>
+        {/* <button className="register-button" onClick={registerScreen}>Register Dog</button> */}
+        <Link to="/register">
+          <button className="register-button">Register Dog</button>
+        </Link>
+        <Link to="/info">
+        <button className="info-button">Dogs</button>
+        </Link>
+        
       </div>
 
 
