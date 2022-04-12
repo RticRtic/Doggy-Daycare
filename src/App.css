@@ -184,11 +184,13 @@
 }
 
 .new-dog-list {
+
   display: grid;
   justify-content: center;
   align-items: center;
   grid-gap: 1em;
-  padding: 3em;
+  padding: 1em;
+  font-size: 15px;
 
 }
 
@@ -203,16 +205,25 @@
 
 }
 
+.new-dog-img {
+  margin-top: 1em;
+  border-radius: 50%;
+  box-shadow: 2px 2px 2px 2px black;
+  width: 150px;
+  height: 150px;
+
+  
+}
+
 .save-or-delete-buttons {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-
-
+  
 }
 
 
-.save-button, .delete-button {
+.save-button, .delete-button, .homepage, .dogpage {
   padding: 10px 20px;
   font-weight: bold;
   border: solid 2px;
@@ -221,13 +232,17 @@
 
 }
 
+.homepage:active, .dogpage:active {
+  transform: translate3d(3px, 3px, 0px);
+}
+
 .save-button:active, .delete-button:active {
   transform: translate3d(3px, 3px, 0px);
 }
 
 .select {
   display: flex;
-  justify-content: center; 
+  justify-content: space-evenly; 
   align-items: center;
   padding: 2em;
   
@@ -240,6 +255,70 @@
   border-radius: 20px;
 }
 
+.info-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.start-page, .register-page {
+  padding: 10px 20px;
+  font-weight: bold;
+  border: solid 2px;
+  border-radius: 20px;
+  background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+}
+
+.start-page:active, .register-page:active {
+  transform: translate3d(3px, 3px, 0px);
+
+}
+
+
+
+.dog-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5em;
+}
+
+.dog {
+  border: solid 2px black;
+  border-radius: 20px;
+  
+}
+
+.showdogbreed-parent {
+  padding-top: 2em;
+}
+
+.showdog-breed {
+  font-style: italic;
+  font-size: calc(20px + 2vmin);
+  background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+  padding: 20px;
+  border-radius: 20px;
+  color: rgb(205, 5, 5);
+  box-shadow: 2px 2px 2px 2px black;
+}
+
+.dogpage-button-parent {
+  padding-top: 2em;
+}
+
+.backtodoginfopage-button {
+  padding: 10px 20px;
+  font-weight: bold;
+  border: solid 2px;
+  border-radius: 20px;
+  background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+
+}
+.backtodoginfopage-button:active {
+  transform: translate3d(3px, 3px, 0px);
+}
 
 
 

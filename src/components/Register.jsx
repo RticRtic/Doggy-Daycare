@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 // import Welcome from "./components/Welcome";
 
@@ -108,15 +109,13 @@ const Register = ({ data }) => {
     setPresent(e.target.value);
     if (e.target.value === "YES" || e.target.value === "yes") {
       setCheckPresent(true);
-     
+
       if (e.target.value !== "") {
         setCheckInputValuePresent(true);
       } else {
         setCheckInputValuePresent(false);
         setCheckPresent(false);
       }
-      
-
     } else if (e.target.value === "NO" || e.target.value === "no") {
       setCheckPresent(false);
       if (e.target.value !== "") {
@@ -125,9 +124,7 @@ const Register = ({ data }) => {
         setCheckInputValuePresent(false);
         setCheckPresent(true);
       }
-      
     }
-    
   };
 
   const inputHandlerOwner = (e) => {
@@ -135,9 +132,8 @@ const Register = ({ data }) => {
     if (e.target.value !== "") {
       setCheckInputValueOwnerName(true);
     } else {
-      setCheckInputValueOwnerName(false)
+      setCheckInputValueOwnerName(false);
     }
-    
   };
 
   const inputHandlerPhonenumber = (e) => {
@@ -147,7 +143,6 @@ const Register = ({ data }) => {
     } else {
       setCheckInputValuePhonenumber(false);
     }
-    
   };
 
   //handler for check if every inputfield have an value
@@ -202,7 +197,7 @@ const Register = ({ data }) => {
     setInputTextOwner("");
     setInputTextPhonenumber("");
 
-    
+    setSaveButtonIsActive(false);
   };
 
   //showing the new dog on the screen.
@@ -228,15 +223,13 @@ const Register = ({ data }) => {
   //Save new dogitem to localstorage
   const saveNewDogToLocalStorage = () => {
     localStorage.setItem("savedApiData", JSON.stringify(data));
-  }
+    setDeleteButtonIsActive(false);
+  };
 
   //NOTE: For the moment its deleting all the added object/objects
   const deleteDogItem = () => {
     localStorage.removeItem("savedApiData");
-    
-  }
-
-  
+  };
 
   return (
     <div>
@@ -310,10 +303,28 @@ const Register = ({ data }) => {
       <div className="new-dog-list">{newDogInfo}</div>
 
       <div className="save-or-delete-buttons">
-        <button className="save-button" onClick={saveNewDogToLocalStorage}>Save</button>
-        <button className="delete-button" onClick={deleteDogItem}>Delete</button>
-      </div>
+        <button
+          className="save-button"
+          onClick={saveNewDogToLocalStorage}
+          disabled={saveButtonIsActive}
+        >
+          {submitButtonIsActive ? "Save" : "Save"}
+        </button>
+        <button
+          className="delete-button"
+          onClick={deleteDogItem}
+          disabled={deleteButtonIsActive}
+        >
+          {submitButtonIsActive ? "Delete" : "Delete"}
+        </button>
+        <Link to="/">
+          <button className="homepage">HomePage</button>
+        </Link>
 
+        <Link to="/info">
+          <button className="dogpage">Dogs</button>
+        </Link>
+      </div>
     </div>
   );
 };

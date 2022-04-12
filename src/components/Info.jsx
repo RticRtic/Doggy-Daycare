@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Info = ({ data, setShowDog}) => {
+const Info = ({ data, setShowDog }) => {
   // const DOG = "dog";
   // const INFO = "info";
 
@@ -9,7 +9,6 @@ const Info = ({ data, setShowDog}) => {
   const [searchInputText, setSearchInputText] = useState("");
   const [dogs, setDogs] = useState(data);
   //const [showDog, setShowDog] = useState(null);
-  
 
   useEffect(() => {}, [dogIsPresent, searchInputText]);
 
@@ -110,7 +109,7 @@ const Info = ({ data, setShowDog}) => {
       <div className="grid-text">Click the image</div>
       <Link to="/showdog">
         <img
-          onClick={()=> setShowDog(dog)}
+          onClick={() => setShowDog(dog)}
           className="dog-img"
           src={dog.img}
           alt="dog"
@@ -142,6 +141,15 @@ const Info = ({ data, setShowDog}) => {
           placeholder="Search Breed"
           onChange={searchInputBreed}
         />
+      </div>
+
+      <div className="info-buttons">
+        <Link to="/">
+          <button className="start-page">Home Page</button>
+        </Link>
+        <Link to="/register">
+          <button className="register-page">Register Dog</button>
+        </Link>
       </div>
 
       <div className="dogList">{dogInfo}</div>
