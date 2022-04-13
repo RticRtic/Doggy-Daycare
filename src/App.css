@@ -52,10 +52,6 @@
   
 }
 
-.register-button:hover, .info-button:hover {
-  background-color: #596164;
-}
-
 
 .register-button:active, .info-button:active {
   transform: translate3d(3px, 3px, 0px);
@@ -219,6 +215,14 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  
+}
+
+.register-buttons-homepage-dogpage-parent{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2em;
+  padding-right: 2em;
   
 }
 

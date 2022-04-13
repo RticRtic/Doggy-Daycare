@@ -235,6 +235,16 @@ const Register = ({ data }) => {
     <div>
       <h1 className="register-header">Register Your Dog</h1>
 
+      <div className="register-buttons-homepage-dogpage-parent">
+        <Link to="/">
+          <button className="homepage">HomePage</button>
+        </Link>
+
+        <Link to="/info">
+          <button className="dogpage">Dogs</button>
+        </Link>
+      </div>
+
       <div className="input-fields">
         <input
           className="input-text-name"
@@ -317,13 +327,6 @@ const Register = ({ data }) => {
         >
           {submitButtonIsActive ? "Delete" : "Delete"}
         </button>
-        <Link to="/">
-          <button className="homepage">HomePage</button>
-        </Link>
-
-        <Link to="/info">
-          <button className="dogpage">Dogs</button>
-        </Link>
       </div>
     </div>
   );
