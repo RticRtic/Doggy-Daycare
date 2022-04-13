@@ -1,7 +1,7 @@
 {
   "name": "doggy-daycare",
   "version": "0.1.0",
-  "homepage" : "http://RticRtic.github.io/Doggy-Daycare",
+  "homepage" : "http://rticrtic.github.io/Doggy-Daycare",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
