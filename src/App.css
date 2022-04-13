@@ -4,7 +4,8 @@
 .App {
   text-align: center;
   background-image: linear-gradient(to right, #868f96 0%, #596164 100%);
-  min-height: 100vh;
+  min-height: 200vh;
+  min-width: 65vh;
   padding-top: 30px;
   box-shadow: 2px 2px 2px 2px black;
  
@@ -77,10 +78,10 @@
 
 .dogList {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
-  grid-gap: 1em;
+  grid-gap: 0.5em;
   padding: 1em;
   
   
@@ -144,7 +145,7 @@
 .input-fields{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1em;
+  grid-gap: 0.5em;
   padding: 1em;
   justify-content: center;
   align-items: center;
@@ -220,7 +221,7 @@
 
 .register-buttons-homepage-dogpage-parent{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding-left: 2em;
   padding-right: 2em;
   
@@ -246,7 +247,7 @@
 
 .select {
   display: flex;
-  justify-content: space-evenly; 
+  justify-content: center; 
   align-items: center;
   padding: 2em;
   
@@ -261,7 +262,7 @@
 
 .info-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding-left: 2em;
   padding-right: 2em;
 }
